@@ -16,7 +16,6 @@ public class DrawView extends View{
 	
 	public DrawView(Context context) {
 		this(context, null);
-		//dgasd
 	}
 
 }
