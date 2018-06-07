@@ -8,6 +8,7 @@ public class FunctionView extends LinearLayout implements View.OnClickListener{
 
 	public FunctionView(Context context) {
 		super(context);
+		//66
 	}
 	
 	public FunctionView(Context context, AttributeSet attrs) {
