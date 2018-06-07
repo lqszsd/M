@@ -12,6 +12,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //6378126e
+        //qweqwe
         
     }
 }
