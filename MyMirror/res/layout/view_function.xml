@@ -7,8 +7,7 @@
     
     <RelativeLayout 
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_30"
-        android:background="@color/setbackground">
+        android:layout_height="@dimen/dp_30">
         
         <!-- question -->
         <ImageView 
@@ -45,7 +44,7 @@
 		    android:layout_width="@dimen/dp_45"
 		    android:layout_height="@dimen/dp_45"
 		    android:layout_centerVertical="true"
-		    android:src="@drawable/light-down"
+		    android:src="@drawable/light_down"
 		    android:scaleType="centerInside"
 		    android:layout_toLeftOf="@+id/cencer"
 		    android:layout_marginLeft="@dimen/dp_20"/>
@@ -56,7 +55,7 @@
 		    android:layout_width="@dimen/dp_45"
 		    android:layout_height="@dimen/dp_45"
 		    android:layout_centerVertical="true"
-		    android:src="@drawable/light-up"
+		    android:src="@drawable/light_up"
 		    android:scaleType="centerInside"
 		    android:layout_toRightOf="@+id/cencer"
 		    android:layout_marginLeft="@dimen/dp_20"/>

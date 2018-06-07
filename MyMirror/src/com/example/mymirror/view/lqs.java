@@ -1,4 +1,4 @@
-package com.example.mymirror.View;
+package com.example.mymirror.view;
 
 public class lqs {
 

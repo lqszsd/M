@@ -1,4 +1,4 @@
-package com.example.mymirror.View;
+package com.example.mymirror.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
