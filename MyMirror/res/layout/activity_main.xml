@@ -16,6 +16,11 @@
        android:layout_height="match_parent"
        android:scaleType="fitXY"/>
    
+   <com.example.mymirror.view.FunctionView 
+       android:id="@+id/function"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"/>
+   
    <LinearLayout 
        android:id="@+id/bottom_bar"
        android:layout_alignParentBottom="true"
