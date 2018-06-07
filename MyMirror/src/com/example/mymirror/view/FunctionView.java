@@ -1,19 +1,28 @@
 package com.example.mymirror.view;
 
-import com.example.mymirror.R;
-
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewParent;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+
+import com.example.mymirror.R;
 
 public class FunctionView extends LinearLayout implements View.OnClickListener{
 
 	private LayoutInflater mInflater;
 	private ImageView light_up;
+	
+	private OnFunctionViewItemClickListener listener;
+	public interface OnFunctionViewItemClickListener {
+		void hint();
+		void choose();
+		void down();
+		void up();
+		
+	}
+	
 	public FunctionView(Context context) {
 		this(context,null);
 		//66

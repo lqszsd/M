@@ -55,5 +55,11 @@
            android:scaleType="centerInside"/>
        
    </LinearLayout>
+   
+   <com.example.mymirror.view.DrawView
+       android:id="@+id/draw_glasses"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:visibility="gone"/>
 
 </RelativeLayout>
