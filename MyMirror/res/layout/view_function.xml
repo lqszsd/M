@@ -7,7 +7,8 @@
     
     <RelativeLayout 
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_30">
+        android:layout_height="@dimen/dp_30"
+        android:background="@color/setbackground">
         
         <!-- question -->
         <ImageView 
@@ -37,7 +38,7 @@
 		    android:src="@drawable/cencer"
 		    android:scaleType="centerInside"
 		    android:layout_centerInParent="true"/>   
-		   
+		    
 		<!-- minus -->  
 		<ImageView 
 		    android:id="@+id/light_down"
@@ -59,6 +60,8 @@
 		    android:scaleType="centerInside"
 		    android:layout_toRightOf="@+id/cencer"
 		    android:layout_marginLeft="@dimen/dp_20"/>
+		   
+		
     </RelativeLayout>
     
 

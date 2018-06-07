@@ -1,13 +1,11 @@
 package com.example.mymirror.view;
 
-import android.R;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.widget.LinearLayout;
 
-public class FunctionView extends LinearLayout implements OnClickListener{
+public class FunctionView extends LinearLayout{
 
 	private LayoutInflater mInflater;
 	public FunctionView(Context context) {
@@ -26,7 +24,7 @@ public class FunctionView extends LinearLayout implements OnClickListener{
 	}
 	
 	private void init(){
-		View view= mInflater.inflate(R.layout., root)
+		//View view= mInflater.inflate(R.layout., root)
 	}
 
 	
