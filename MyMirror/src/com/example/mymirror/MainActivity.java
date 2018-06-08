@@ -23,38 +23,6 @@ import com.example.mymirror.view.PictureView;
 
 public class MainActivity extends Activity implements SurfaceHolder.Callback {
 	
-	@Override
-	public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
-		// TODO Auto-generated method stub
-		Log.e("surfaceChanged","绘制改变");
-		try{
-			camera.stopPreview();
-			camera.setPreviewDisplay(holder);
-			camera.startPreview();
-		}catch(IOException e){
-			e.printStackTrace();
-		}
-	}
-	@Override
-	public void surfaceCreated(SurfaceHolder holder) {
-		// TODO Auto-generated method stub
-		Log.e("surfaceCreated","绘制开始");
-		try{
-			setCamera();
-			camera.setPreviewDisplay(holder);
-			camera.startPreview();
-		}catch(IOException e){
-			camera.release();
-			camera = null;
-			e.printStackTrace();
-		}
-	}
-	@Override
-	public void surfaceDestroyed(SurfaceHolder holder) {
-		// TODO Auto-generated method stub
-		Log.e("surfaceDestroyed","绘制结束");
-		toRelease();
-	}
 
 	private void toRelease() {
 		// TODO Auto-generated method stub
@@ -137,6 +105,7 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback {
     	Camera.CameraInfo cameraInfo=new Camera.CameraInfo();
     	//获取相机数量
     	cameraCount=Camera.getNumberOfCameras();
+    	Log.d(TAG,"??"+cameraCount);
     	for(int camIdx=0;camIdx<cameraCount;camIdx++){
     		Camera.getCameraInfo(camIdx, cameraInfo);
     		if(cameraInfo.facing == Camera.CameraInfo.CAMERA_FACING_FRONT){
@@ -211,10 +180,36 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback {
     	}
 		
 	}
-    
-    
-    
-    
-    
-    
+    @Override
+	public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
+		// TODO Auto-generated method stub
+		Log.e("surfaceChanged","绘制改变");
+		try{
+			camera.stopPreview();
+			camera.setPreviewDisplay(holder);
+			camera.startPreview();
+		}catch(IOException e){
+			e.printStackTrace();
+		}
+	}
+	@Override
+	public void surfaceCreated(SurfaceHolder holder) {
+		// TODO Auto-generated method stub
+		Log.e("surfaceCreated","绘制开始");
+		try{
+			setCamera();
+			camera.setPreviewDisplay(holder);
+			camera.startPreview();
+		}catch(IOException e){
+			camera.release();
+			camera = null;
+			e.printStackTrace();
+		}
+	}
+	@Override
+	public void surfaceDestroyed(SurfaceHolder holder) {
+		// TODO Auto-generated method stub
+		Log.e("surfaceDestroyed","绘制结束");
+		toRelease();
+	}
 }
