@@ -161,6 +161,7 @@ public class MainActivity extends Activity {
     		seekBar.setMax(maxFocus);
     		Log.e(TAG, "当前镜头距离：" + minFocus + "\t\t获取最大距离：" + maxFocus);
     		camera.setParameters(parameters);
+    		//dskjf
     	}
 		
 	}
