@@ -20,7 +20,23 @@ import com.example.mymirror.view.DrawView;
 import com.example.mymirror.view.FunctionView;
 import com.example.mymirror.view.PictureView;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements SurfaceHolder.Callback {
+	@Override
+	public void surfaceChanged(SurfaceHolder arg0, int arg1, int arg2, int arg3) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void surfaceCreated(SurfaceHolder arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void surfaceDestroyed(SurfaceHolder arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	//定义类的简写名称
 	private static final String TAG=MainActivity.class.getSimpleName();
 	//控制surface空间显示的内容
