@@ -26,15 +26,35 @@ public final class R {
         public static final int dp_5=0x7f050004;
     }
     public static final class drawable {
-        public static final int cencer=0x7f020000;
-        public static final int choose=0x7f020001;
-        public static final int guide=0x7f020002;
-        public static final int hint=0x7f020003;
-        public static final int ic_launcher=0x7f020004;
-        public static final int light_down=0x7f020005;
-        public static final int light_up=0x7f020006;
-        public static final int minus=0x7f020007;
-        public static final int plus=0x7f020008;
+        public static final int back_to_main=0x7f020000;
+        public static final int background=0x7f020001;
+        public static final int background2=0x7f020002;
+        public static final int cencer=0x7f020003;
+        public static final int choose=0x7f020004;
+        public static final int downlight=0x7f020005;
+        public static final int downsmall=0x7f020006;
+        public static final int glasses=0x7f020007;
+        public static final int guide=0x7f020008;
+        public static final int hint=0x7f020009;
+        public static final int ic_launcher=0x7f02000a;
+        public static final int image_test=0x7f02000b;
+        public static final int light=0x7f02000c;
+        public static final int light_down=0x7f02000d;
+        public static final int light_up=0x7f02000e;
+        public static final int mag_0001=0x7f02000f;
+        public static final int mag_0003=0x7f020010;
+        public static final int mag_0005=0x7f020011;
+        public static final int mag_0006=0x7f020012;
+        public static final int mag_0007=0x7f020013;
+        public static final int mag_0008=0x7f020014;
+        public static final int mag_0009=0x7f020015;
+        public static final int mag_0011=0x7f020016;
+        public static final int mag_0012=0x7f020017;
+        public static final int mag_0014=0x7f020018;
+        public static final int minus=0x7f020019;
+        public static final int plus=0x7f02001a;
+        public static final int uplarge=0x7f02001b;
+        public static final int uplight=0x7f02001c;
     }
     public static final class id {
         public static final int add=0x7f080006;
