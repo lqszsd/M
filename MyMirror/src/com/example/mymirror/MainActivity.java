@@ -24,18 +24,7 @@ import com.example.mymirror.view.PictureView;
 public class MainActivity extends Activity implements SurfaceHolder.Callback {
 	
 
-	private void toRelease() {
-		// TODO Auto-generated method stub
-		camera.setPreviewCallback(null);
-		camera.stopPreview();
-		camera.release();
-		camera = null;
-	}
-	//主界面调取摄像头
-	private void setViews() {
-		holder = surfaceView.getHolder();
-		holder.addCallback(this);
-	}
+	
 
 	//定义类的简写名称
 	private static final String TAG=MainActivity.class.getSimpleName();
@@ -211,5 +200,17 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback {
 		// TODO Auto-generated method stub
 		Log.e("surfaceDestroyed","绘制结束");
 		toRelease();
+	}
+	private void toRelease() {
+		// TODO Auto-generated method stub
+		camera.setPreviewCallback(null);
+		camera.stopPreview();
+		camera.release();
+		camera = null;
+	}
+	//主界面调取摄像头
+	private void setViews() {
+		holder = surfaceView.getHolder();
+		holder.addCallback(this);
 	}
 }
