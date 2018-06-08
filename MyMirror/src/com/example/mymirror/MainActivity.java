@@ -1,28 +1,24 @@
 package com.example.mymirror;
 
-import com.example.mymirror.view.DrawView;
-import com.example.mymirror.view.FunctionView;
-import com.example.mymirror.view.PictureView;
+import java.util.List;
 
-import android.R.drawable;
-import android.R.id;
-import android.R.integer;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.pm.PackageManager;
-import android.graphics.Picture;
-import android.graphics.drawable.Drawable;
+import android.graphics.ImageFormat;
 import android.hardware.Camera;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
+
+import com.example.mymirror.view.DrawView;
+import com.example.mymirror.view.FunctionView;
+import com.example.mymirror.view.PictureView;
 
 public class MainActivity extends Activity {
 	//定义类的简写名称
@@ -44,7 +40,7 @@ public class MainActivity extends Activity {
 	//判断是否有相机
 	private boolean havaCamera;
 	//相机的指数 旋转值 ，默认焦距 最大焦距 调整焦距 当前焦距值
-	private int mCurrentCamIndex,ROTATE,minFocus,maxFocus,ereryFocus,nowFocus;
+	private int mCurrentCamIndex,ROTATE,minFocus,maxFocus,everyFocus,nowFocus;
 	//定义相机类对象
 	private Camera camera;
 	
@@ -88,7 +84,7 @@ public class MainActivity extends Activity {
      * @param cameraCount 相机数量
      * @return 摄像头对象
      */
-    private Camera openCamers() {
+    private Camera openFrontFacingCameraGingerbread() {
     	int cameraCount;
     	Camera mCamera=null;
     	Camera.CameraInfo cameraInfo=new Camera.CameraInfo();
@@ -109,4 +105,69 @@ public class MainActivity extends Activity {
     	return mCamera;
 		
 	}
+    //设置摄像头方向
+    private void setCameraDisplayOrientatiion(Activity activity,int cameraId,Camera camera){
+    	Camera.CameraInfo info = new  Camera.CameraInfo();
+    	Camera.getCameraInfo(cameraId, info);
+    	//获得旋转角度
+    	int rotation =  activity.getWindowManager().getDefaultDisplay().getRotation();
+    	int degrees = 0;
+    	switch (rotation) {
+		case Surface.ROTATION_0:
+			degrees = 0;
+			break;
+		case Surface.ROTATION_90:
+			degrees = 90;
+			break;
+		case Surface.ROTATION_180:
+			degrees = 180;
+			break;
+		case Surface.ROTATION_270:
+			degrees = 270;
+			break;
+		}
+    	int result = 0;
+    	if (info.facing == Camera.CameraInfo.CAMERA_FACING_FRONT){
+    		//前置摄像头旋转算法
+    		result = (info.orientation + degrees)%360;
+    		result = (360-result)%360;
+    	}else {
+			//后置摄像头旋转算法
+    		result = (info.orientation - degrees + 360)%360;
+		}
+    	ROTATE = result + 180;
+    	camera.setDisplayOrientation(result);
+    }
+    
+    //设置摄像头
+    private void setCamera() {
+    	if(checkCameraHardware()){
+    		camera = openFrontFacingCameraGingerbread();
+    		setCameraDisplayOrientatiion(this, mCurrentCamIndex, camera);
+    		Camera.Parameters parameters = camera.getParameters();
+    		parameters.setPictureFormat(ImageFormat.JPEG);
+    		List<String> list = parameters.getSupportedFocusModes();
+    		for (String str : list){
+    			Log.e(TAG,"支持的对焦的模式：" + str);
+    		}
+    		List<Camera.Size> pictureList = parameters.getSupportedPictureSizes();
+    		List<Camera.Size> previewList = parameters.getSupportedPreviewSizes();
+    		parameters.setPictureSize(pictureList.get(0).width, pictureList.get(0).height);
+    		parameters.setPreviewSize(previewList.get(0).width, previewList.get(0).height);
+    		minFocus = parameters.getZoom();
+    		maxFocus = parameters.getMaxZoom();
+    		everyFocus = 1;
+    		nowFocus = minFocus;
+    		seekBar.setMax(maxFocus);
+    		Log.e(TAG, "当前镜头距离：" + minFocus + "\t\t获取最大距离：" + maxFocus);
+    		camera.setParameters(parameters);
+    	}
+		
+	}
+    
+    
+    
+    
+    
+    
 }
