@@ -1,5 +1,6 @@
 package com.example.mymirror;
 
+import java.io.IOException;
 import java.util.List;
 
 import android.app.Activity;
@@ -21,20 +22,51 @@ import com.example.mymirror.view.FunctionView;
 import com.example.mymirror.view.PictureView;
 
 public class MainActivity extends Activity implements SurfaceHolder.Callback {
+	
 	@Override
-	public void surfaceChanged(SurfaceHolder arg0, int arg1, int arg2, int arg3) {
+	public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
 		// TODO Auto-generated method stub
-		
+		Log.e("surfaceChanged","绘制改变");
+		try{
+			camera.stopPreview();
+			camera.setPreviewDisplay(holder);
+			camera.startPreview();
+		}catch(IOException e){
+			e.printStackTrace();
+		}
 	}
 	@Override
-	public void surfaceCreated(SurfaceHolder arg0) {
+	public void surfaceCreated(SurfaceHolder holder) {
 		// TODO Auto-generated method stub
-		
+		Log.e("surfaceCreated","绘制开始");
+		try{
+			setCamera();
+			camera.setPreviewDisplay(holder);
+			camera.startPreview();
+		}catch(IOException e){
+			camera.release();
+			camera = null;
+			e.printStackTrace();
+		}
 	}
 	@Override
-	public void surfaceDestroyed(SurfaceHolder arg0) {
+	public void surfaceDestroyed(SurfaceHolder holder) {
 		// TODO Auto-generated method stub
-		
+		Log.e("surfaceDestroyed","绘制结束");
+		toRelease();
+	}
+
+	private void toRelease() {
+		// TODO Auto-generated method stub
+		camera.setPreviewCallback(null);
+		camera.stopPreview();
+		camera.release();
+		camera = null;
+	}
+	//主界面调取摄像头
+	private void setViews() {
+		holder = surfaceView.getHolder();
+		holder.addCallback(this);
 	}
 
 	//定义类的简写名称
@@ -67,8 +99,7 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         init();
-        
-        
+        setViews();
     }
     /**
      * 初始化控件
@@ -177,7 +208,6 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback {
     		seekBar.setMax(maxFocus);
     		Log.e(TAG, "当前镜头距离：" + minFocus + "\t\t获取最大距离：" + maxFocus);
     		camera.setParameters(parameters);
-    		//dskjf
     	}
 		
 	}
