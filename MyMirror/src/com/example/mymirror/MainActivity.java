@@ -10,9 +10,11 @@ import android.graphics.ImageFormat;
 import android.hardware.Camera;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
@@ -21,11 +23,8 @@ import com.example.mymirror.view.DrawView;
 import com.example.mymirror.view.FunctionView;
 import com.example.mymirror.view.PictureView;
 
-public class MainActivity extends Activity implements SurfaceHolder.Callback {
-	
-
-	
-
+public class MainActivity extends Activity implements SurfaceHolder.Callback,SeekBar.OnSeekBarChangeListener,
+View.OnTouchListener,View.OnClickListener {
 	//定义类的简写名称
 	private static final String TAG=MainActivity.class.getSimpleName();
 	//控制surface空间显示的内容
@@ -212,5 +211,81 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback {
 	private void setViews() {
 		holder = surfaceView.getHolder();
 		holder.addCallback(this);
+		add.setOnTouchListener(this);
+        minus.setOnTouchListener(this);
+        seekBar.setOnSeekBarChangeListener(this);
 	}
+	//设置相机焦距方法
+	private void setZoomValues(int want){
+		//获取相机信息
+		Camera.Parameters parameters=camera.getParameters();
+		seekBar.setProgress(want);
+		parameters.setZoom(want);
+		camera.setParameters(parameters);
+	}
+	//获取焦距
+    private int getZoomValues() {
+        Camera.Parameters parameters = camera.getParameters();//获取相机参数
+        int values = parameters.getZoom();//获取当前焦距
+        return values;
+    }
+    //放大焦距
+    private void addZoomValues() {
+        if (nowFocus > maxFocus) { //当前焦距 大于 最大焦距
+            Log.e(TAG, "大于maxFocus是不可能的！");
+        } else if (nowFocus == maxFocus) {
+        } else {
+            setZoomValues(getZoomValues() + everyFocus);//设焦距
+        }
+    }
+  //缩小焦距
+    private void minusZoomValues() {
+        if (nowFocus < 0) {
+            Log.e(TAG, "小于0是不可能的！");
+        } else if (nowFocus == 0) {
+        } else {
+            setZoomValues(getZoomValues() - everyFocus);//设焦距
+        }
+    }
+  //设置焦距跟随进度条变化
+    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+        //0~99  99级
+        Camera.Parameters parameters = camera.getParameters();
+        nowFocus = progress; 
+        parameters.setZoom(progress);
+        camera.setParameters(parameters);
+    }
+    @Override
+	public void onStartTrackingTouch(SeekBar arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void onStopTrackingTouch(SeekBar arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	//焦距调节的按钮事件
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        switch (v.getId()) {
+            case R.id.add:
+                addZoomValues();
+                break;
+            case R.id.minus:
+                minusZoomValues();
+                break;
+            case R.id.picture://多点触控的操作
+                //待添加手势识别事件函数
+                break;
+            default:
+                break;
+        }
+        return true;
+    }
+    @Override
+    public void onClick(View v) {
+
+    }
+
 }
