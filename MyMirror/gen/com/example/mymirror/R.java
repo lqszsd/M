@@ -11,70 +11,87 @@ public final class R {
     public static final class attr {
     }
     public static final class color {
+        public static final int colorAccent=0x7f040002;
+        public static final int colorPrimaryDark=0x7f040001;
         public static final int setbackground=0x7f040000;
+        public static final int setbackground2=0x7f040004;
+        public static final int setbackground3=0x7f040005;
+        public static final int setbackground4=0x7f040006;
+        public static final int white=0x7f040003;
     }
     public static final class dimen {
+        /** 尺寸资源 
+         */
         public static final int activity_horizontal_margin=0x7f050000;
         public static final int activity_vertical_margin=0x7f050001;
         public static final int dp_0=0x7f050002;
         public static final int dp_10=0x7f050005;
+        public static final int dp_160=0x7f05000b;
         public static final int dp_18=0x7f050006;
         public static final int dp_20=0x7f050007;
+        public static final int dp_200=0x7f05000c;
         public static final int dp_3=0x7f050003;
         public static final int dp_30=0x7f050008;
+        public static final int dp_300=0x7f05000d;
         public static final int dp_45=0x7f050009;
         public static final int dp_5=0x7f050004;
+        public static final int dp_55=0x7f05000a;
     }
     public static final class drawable {
-        public static final int back_to_main=0x7f020000;
-        public static final int background=0x7f020001;
-        public static final int background2=0x7f020002;
-        public static final int cencer=0x7f020003;
-        public static final int choose=0x7f020004;
-        public static final int downlight=0x7f020005;
-        public static final int downsmall=0x7f020006;
-        public static final int glasses=0x7f020007;
-        public static final int guide=0x7f020008;
-        public static final int hint=0x7f020009;
-        public static final int ic_launcher=0x7f02000a;
-        public static final int image_test=0x7f02000b;
-        public static final int light=0x7f02000c;
-        public static final int light_down=0x7f02000d;
-        public static final int light_up=0x7f02000e;
-        public static final int mag_0001=0x7f02000f;
-        public static final int mag_0003=0x7f020010;
-        public static final int mag_0005=0x7f020011;
-        public static final int mag_0006=0x7f020012;
-        public static final int mag_0007=0x7f020013;
-        public static final int mag_0008=0x7f020014;
-        public static final int mag_0009=0x7f020015;
-        public static final int mag_0011=0x7f020016;
-        public static final int mag_0012=0x7f020017;
-        public static final int mag_0014=0x7f020018;
-        public static final int minus=0x7f020019;
-        public static final int plus=0x7f02001a;
-        public static final int uplarge=0x7f02001b;
-        public static final int uplight=0x7f02001c;
+        public static final int an=0x7f020000;
+        public static final int back_shape_pink=0x7f020001;
+        public static final int back_shape_white=0x7f020002;
+        public static final int back_to_main=0x7f020003;
+        public static final int background=0x7f020004;
+        public static final int background2=0x7f020005;
+        public static final int cencer=0x7f020006;
+        public static final int choose=0x7f020007;
+        public static final int downlight=0x7f020008;
+        public static final int downsmall=0x7f020009;
+        public static final int glasses=0x7f02000a;
+        public static final int guide=0x7f02000b;
+        public static final int hint=0x7f02000c;
+        public static final int ic_launcher=0x7f02000d;
+        public static final int image_test=0x7f02000e;
+        public static final int light=0x7f02000f;
+        public static final int light_down=0x7f020010;
+        public static final int light_up=0x7f020011;
+        public static final int mag_0001=0x7f020012;
+        public static final int mag_0003=0x7f020013;
+        public static final int mag_0005=0x7f020014;
+        public static final int mag_0006=0x7f020015;
+        public static final int mag_0007=0x7f020016;
+        public static final int mag_0008=0x7f020017;
+        public static final int mag_0009=0x7f020018;
+        public static final int mag_0011=0x7f020019;
+        public static final int mag_0012=0x7f02001a;
+        public static final int mag_0014=0x7f02001b;
+        public static final int minus=0x7f02001c;
+        public static final int plus=0x7f02001d;
+        public static final int uplarge=0x7f02001e;
+        public static final int uplight=0x7f02001f;
     }
     public static final class id {
-        public static final int add=0x7f080006;
-        public static final int bottom_bar=0x7f080003;
-        public static final int cencer=0x7f08000a;
-        public static final int choose=0x7f080009;
-        public static final int draw_glasses=0x7f080007;
-        public static final int function=0x7f080002;
-        public static final int hint=0x7f080008;
-        public static final int light_down=0x7f08000b;
-        public static final int light_up=0x7f08000c;
-        public static final int minus=0x7f080004;
-        public static final int picture=0x7f080001;
-        public static final int seebar=0x7f080005;
-        public static final int surface=0x7f080000;
+        public static final int add=0x7f080007;
+        public static final int bottom_bar=0x7f080004;
+        public static final int cencer=0x7f08000b;
+        public static final int choose=0x7f08000a;
+        public static final int draw_glasses=0x7f080008;
+        public static final int function=0x7f080003;
+        public static final int hint=0x7f080009;
+        public static final int i_know=0x7f080000;
+        public static final int light_down=0x7f08000c;
+        public static final int light_up=0x7f08000d;
+        public static final int minus=0x7f080005;
+        public static final int picture=0x7f080002;
+        public static final int seebar=0x7f080006;
+        public static final int surface=0x7f080001;
     }
     public static final class layout {
         public static final int activity_guide=0x7f030000;
-        public static final int activity_main=0x7f030001;
-        public static final int view_function=0x7f030002;
+        public static final int activity_hint=0x7f030001;
+        public static final int activity_main=0x7f030002;
+        public static final int view_function=0x7f030003;
     }
     public static final class string {
         public static final int app_name=0x7f060000;
