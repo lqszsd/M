@@ -5,6 +5,7 @@ import java.util.List;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.ImageFormat;
 import android.hardware.Camera;
@@ -24,13 +25,12 @@ import com.example.mymirror.view.FunctionView;
 import com.example.mymirror.view.PictureView;
 
 public class MainActivity extends Activity implements SurfaceHolder.Callback,SeekBar.OnSeekBarChangeListener,
-View.OnTouchListener,View.OnClickListener {
+View.OnTouchListener,View.OnClickListener,FunctionView.onFunctionViewItemClickListener {
 	//定义类的简写名称
 	private static final String TAG=MainActivity.class.getSimpleName();
 	//控制surface空间显示的内容
 	private SurfaceHolder holder;
 	//显示相机拍摄的内容
-	//666
 	private SurfaceView surfaceView;
 	//效果定义
 	private PictureView pictureView;
@@ -215,6 +215,7 @@ View.OnTouchListener,View.OnClickListener {
 		add.setOnTouchListener(this);
         minus.setOnTouchListener(this);
         seekBar.setOnSeekBarChangeListener(this);
+        functionView.setOnFunctionViewItemClickListener(this);
 	}
 	//设置相机焦距方法
 	private void setZoomValues(int want){
@@ -288,5 +289,22 @@ View.OnTouchListener,View.OnClickListener {
     public void onClick(View v) {
 
     }
+	@Override
+	public void hint() {
+		 Intent intent = new Intent(this,HintActivity.class);
+	     startActivity(intent);
+	}
+	@Override
+	public void choose() {
+		
+	}
+	@Override
+	public void down() {
+		
+	}
+	@Override
+	public void up() {
+		
+	}
 
 }

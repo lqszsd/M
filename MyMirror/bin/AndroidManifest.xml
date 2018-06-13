@@ -34,6 +34,10 @@
             android:name=".MainActivity"
             android:label="@string/title_activity_guide" >
         </activity>
+        <activity
+            android:name=".HintActivity"
+            android:theme="@style/AppTheme">
+        </activity>
     </application>
 
 </manifest>
