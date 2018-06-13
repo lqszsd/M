@@ -30,6 +30,7 @@ View.OnTouchListener,View.OnClickListener {
 	//控制surface空间显示的内容
 	private SurfaceHolder holder;
 	//显示相机拍摄的内容
+	//666
 	private SurfaceView surfaceView;
 	//效果定义
 	private PictureView pictureView;
