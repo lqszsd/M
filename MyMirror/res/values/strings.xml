@@ -4,5 +4,6 @@
     <string name="app_name">MyMirror</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_guide">GuideActivity</string>
+    <string name="back_text">返回</string>
 
 </resources>

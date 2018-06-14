@@ -38,6 +38,9 @@
             android:name=".HintActivity"
             android:theme="@style/AppTheme">
         </activity>
+        <!-- 镜框 -->
+        <activity 
+            android:name="com.example.mymirror.PhotoFrameActivity"/>
     </application>
 
 </manifest>

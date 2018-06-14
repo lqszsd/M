@@ -19,6 +19,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
+import android.widget.Toast;
 
 import com.example.mymirror.view.DrawView;
 import com.example.mymirror.view.FunctionView;
@@ -26,25 +27,7 @@ import com.example.mymirror.view.PictureView;
 //important
 public class MainActivity extends Activity implements SurfaceHolder.Callback,SeekBar.OnSeekBarChangeListener,
 View.OnTouchListener,View.OnClickListener,FunctionView.onFunctionViewItemClickListener {
-	@Override
-	public void hint() {
-		Intent intent=new Intent(this,HintActivity.class);
-		Log.i(TAG, "输出");
-		startActivity(intent);
-		
-	}
-	@Override
-	public void choose() {
-		
-	}
-	@Override
-	public void down() {
-		
-	}
-	@Override
-	public void up() {
-		
-	}
+	
 	//定义类的简写名称
 	private static final String TAG=MainActivity.class.getSimpleName();
 	//控制surface空间显示的内容
@@ -68,6 +51,11 @@ View.OnTouchListener,View.OnClickListener,FunctionView.onFunctionViewItemClickLi
 	//定义相机类对象
 	private Camera camera;
 	
+	//镜框属性
+	private int frame_index;    //镜框的类型
+	private int[] frame_index_ID;  //图片资源ID数组
+	private static int PHOTO=1;    //镜框请求值
+	
 	
 
     @Override
@@ -76,10 +64,29 @@ View.OnTouchListener,View.OnClickListener,FunctionView.onFunctionViewItemClickLi
         setContentView(R.layout.activity_main);
         init();
         setViews();
+        
+        //设置默认镜框ID数组
+        frame_index=0;
+        frame_index_ID=new int[]{R.mipmap.mag_0001,R.mipmap.mag_0003,R.mipmap.mag_0005,R.mipmap.mag_0006,
+				R.mipmap.mag_0007,R.mipmap.mag_0008,R.mipmap.mag_0009,R.mipmap.mag_0011,R.mipmap.mag_0012,
+				R.mipmap.mag_0014};
     }
-    /**
-     * 初始化控件
-     */
+    
+    
+    @Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		Log.e(TAG, "返回值"+resultCode+"\t\t请求值："+requestCode);
+		if (resultCode==RESULT_OK && requestCode==PHOTO) {
+			int position =data.getIntExtra("POSITION", 0); //从返回数据中获取POSITION 值
+			frame_index=position;
+			Log.e(TAG, "返回的镜框类别:"+position);
+		}
+	}
+
+
+
+	// 初始化控件
     public void init(){
     	surfaceView=(SurfaceView)findViewById(R.id.surface);
     	pictureView=(PictureView)findViewById(R.id.picture);
@@ -90,10 +97,8 @@ View.OnTouchListener,View.OnClickListener,FunctionView.onFunctionViewItemClickLi
     	bottomLayout=(LinearLayout)findViewById(R.id.bottom_bar);
     	drawView=(DrawView)findViewById(R.id.draw_glasses);  	
     }
-    /**
-     * 判断手机是否有摄像头
-     * @return true or false
-     */
+    
+    //判断手机是否有摄像头
     private boolean checkCameraHardware() {
     	if(getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA)){
     		return true;
@@ -102,11 +107,8 @@ View.OnTouchListener,View.OnClickListener,FunctionView.onFunctionViewItemClickLi
     	}
     	
 	}
-    /**
-     * 打开前置摄像头并返回摄像头对象
-     * @param cameraCount 相机数量
-     * @return 摄像头对象
-     */
+   
+    //打开前置摄像头并返回摄像头对象, @param cameraCount 相机数量, * @return 摄像头对象
     private Camera openFrontFacingCameraGingerbread() {
     	int cameraCount;
     	Camera mCamera=null;
@@ -304,6 +306,30 @@ View.OnTouchListener,View.OnClickListener,FunctionView.onFunctionViewItemClickLi
         }
         return true;
     }
+    
+    @Override
+	public void hint() {
+		Intent intent=new Intent(this,HintActivity.class);
+		Log.i(TAG, "输出");
+		startActivity(intent);
+		
+	}
+	@Override
+	public void choose() {
+		Intent intent=new Intent(this,PhotoFrameActivity.class);
+		startActivityForResult(intent, PHOTO);  //PHOTO 为镜框返回值，其值为1
+		Toast.makeText(this, "选择", Toast.LENGTH_SHORT).show();
+		
+	}
+	@Override
+	public void down() {
+		
+	}
+	@Override
+	public void up() {
+		
+	}
+	
 	@Override
 	public void onClick(View view) {
 		// TODO Auto-generated method stub
