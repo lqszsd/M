@@ -12,7 +12,7 @@ import com.example.mymirror.R;
 public class FunctionView extends LinearLayout implements View.OnClickListener{
 
 	private LayoutInflater mInflater;
-	private ImageView light_up;
+	//private ImageView light_up;
 	private ImageView hint,choose,down,up;
   	public static final int HINT_ID = R.id.hint;
   	public static final int CHOOSE_ID = R.id.choose;
@@ -43,6 +43,27 @@ public class FunctionView extends LinearLayout implements View.OnClickListener{
 		init();
 	}
 	
+	
+	
+	
+	private void init(){
+		View view=mInflater.inflate(R.layout.view_function,this );
+		//light_up=(ImageView)findViewById(R.id.light_up);
+		hint = (ImageView) view.findViewById(HINT_ID);
+		choose = (ImageView) view.findViewById(CHOOSE_ID);
+		down = (ImageView) view.findViewById(DOWN_ID);
+		up = (ImageView) view.findViewById(UP_ID);
+		setView();
+		
+	}
+
+	private void setView(){
+		    hint.setOnClickListener(this);
+		    choose.setOnClickListener(this);
+		    down.setOnClickListener(this);
+		    up.setOnClickListener(this);
+	}
+	
 	@Override
 	  public void onClick(View v) {
 	    if (listener!= null){
@@ -65,28 +86,8 @@ public class FunctionView extends LinearLayout implements View.OnClickListener{
 	    }
 	 }
 	
-	
-	private void init(){
-		View view=mInflater.inflate(R.layout.view_function,this );
-		light_up=(ImageView)findViewById(R.id.light_up);
-		hint = (ImageView) view.findViewById(HINT_ID);
-		choose = (ImageView) view.findViewById(CHOOSE_ID);
-		down = (ImageView) view.findViewById(DOWN_ID);
-		up = (ImageView) view.findViewById(UP_ID);
-		setView();
-		
-	}
-
-	private void setView(){
-		    hint.setOnClickListener(this);
-		    choose.setOnClickListener(this);
-		    down.setOnClickListener(this);
-		    up.setOnClickListener(this);
-	}
-	
 	public void setOnFunctionViewItemClickListener(onFunctionViewItemClickListener monFunctionViewItemClickListener) {
 		this.listener = monFunctionViewItemClickListener;
-		//sdf
 	}
 	
 }

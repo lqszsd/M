@@ -23,9 +23,28 @@ import android.widget.SeekBar;
 import com.example.mymirror.view.DrawView;
 import com.example.mymirror.view.FunctionView;
 import com.example.mymirror.view.PictureView;
-
+//important
 public class MainActivity extends Activity implements SurfaceHolder.Callback,SeekBar.OnSeekBarChangeListener,
 View.OnTouchListener,View.OnClickListener,FunctionView.onFunctionViewItemClickListener {
+	@Override
+	public void hint() {
+		Intent intent=new Intent(this,HintActivity.class);
+		Log.i(TAG, "输出");
+		startActivity(intent);
+		
+	}
+	@Override
+	public void choose() {
+		
+	}
+	@Override
+	public void down() {
+		
+	}
+	@Override
+	public void up() {
+		
+	}
 	//定义类的简写名称
 	private static final String TAG=MainActivity.class.getSimpleName();
 	//控制surface空间显示的内容
@@ -285,26 +304,13 @@ View.OnTouchListener,View.OnClickListener,FunctionView.onFunctionViewItemClickLi
         }
         return true;
     }
-    @Override
-    public void onClick(View v) {
-
-    }
 	@Override
-	public void hint() {
-		 Intent intent = new Intent(this,HintActivity.class);
-	     startActivity(intent);
-	}
-	@Override
-	public void choose() {
+	public void onClick(View view) {
+		// TODO Auto-generated method stub
 		
 	}
-	@Override
-	public void down() {
-		
-	}
-	@Override
-	public void up() {
-		
-	}
+    
+	
+	
 
 }
