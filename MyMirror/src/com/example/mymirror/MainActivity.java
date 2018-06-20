@@ -81,6 +81,7 @@ View.OnTouchListener,View.OnClickListener,FunctionView.onFunctionViewItemClickLi
 			int position =data.getIntExtra("POSITION", 0); //从返回数据中获取POSITION 值
 			frame_index=position;
 			Log.e(TAG, "返回的镜框类别:"+position);
+			pictureView.setPhotoFrame(position);
 		}
 	}
 
@@ -192,7 +193,6 @@ View.OnTouchListener,View.OnClickListener,FunctionView.onFunctionViewItemClickLi
 	}
     @Override
 	public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
-		// TODO Auto-generated method stub
 		Log.e("surfaceChanged","绘制改变");
 		try{
 			camera.stopPreview();
@@ -204,7 +204,6 @@ View.OnTouchListener,View.OnClickListener,FunctionView.onFunctionViewItemClickLi
 	}
 	@Override
 	public void surfaceCreated(SurfaceHolder holder) {
-		// TODO Auto-generated method stub
 		Log.e("surfaceCreated","绘制开始");
 		try{
 			setCamera();
@@ -307,6 +306,8 @@ View.OnTouchListener,View.OnClickListener,FunctionView.onFunctionViewItemClickLi
         return true;
     }
     
+    
+    //funcitionView 里面的四个图片的点击方法
     @Override
 	public void hint() {
 		Intent intent=new Intent(this,HintActivity.class);
